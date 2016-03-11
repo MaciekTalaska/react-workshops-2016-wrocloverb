@@ -1,5 +1,5 @@
 const { $, React, ReactDOM,
-        ReactBootstrap: {Row, Grid, Button, ButtonGroup, Panel }} = window;
+        ReactBootstrap: {Row, Grid, Col, ListGroup,ListGroupItem, Button, ButtonGroup, Panel }} = window;
 
 function ConferencesApp() {
   const Header = () => {
@@ -17,6 +17,31 @@ function ConferencesApp() {
             );
   };
 
+  const ConferenceDays = () => {
+    return (
+      <div>
+      <h4>Days:</h4>
+      <ListGroup>
+        <ListGroupItem>Working with Legacy Codebase</ListGroupItem>
+        <ListGroupItem>React.js + Redux Workshops</ListGroupItem>
+      </ListGroup>
+      </div>
+    );
+  };
+
+  const ConferenceEvents = () => {
+    return (
+      <div>
+        <h4>Events:</h4>
+        <ListGroup>
+          <ListGroupItem>Day 1</ListGroupItem>
+          <ListGroupItem>Day 2</ListGroupItem>
+          <ListGroupItem>Day 3</ListGroupItem>
+        </ListGroup>
+      </div>
+    );
+  };
+
   const ConferenceDetails = () => {
     const conferenceHeader = (
       <div>
@@ -28,7 +53,16 @@ function ConferencesApp() {
     ); 
 
     return (<Panel header={conferenceHeader}>
-              Just a placeholder...
+              <Grid>
+                <Row>
+                  <Col md={6}>
+                    <ConferenceDays/>
+                  </Col>
+                  <Col md={6}>
+                    <ConferenceEvents/>
+                  </Col>  
+                </Row>
+              </Grid>
             </Panel>
     );
   };
