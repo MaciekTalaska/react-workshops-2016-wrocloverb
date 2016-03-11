@@ -3,8 +3,18 @@ const { $, React, ReactDOM,
 
 function ConferencesApp() {
   const conferenceDetailsData = [
-    {title: "Wroc_love.rb 2016", events: ["Working with Legacy Codebase", "React.js + Redux Workshops"], days: ["Day 1", "Day 2", "Day 3"], active:true},
-    {title: "Wroc_love.rb 2015", events: [], days: [], active:false}
+    {title: "Wroc_love.rb 2016", 
+      events: ["Working with Legacy Codebase", "React.js + Redux Workshops"], 
+      days: [
+              {id:1, name:"Day 1"}, 
+              {id:2, name:"Day 2"}, 
+              {id:3, name:"Day 3"}], 
+      active:true}
+,
+    {title: "Wroc_love.rb 2015", 
+      events: [], 
+      days: [], 
+      active:false}
   ];
 
   const Header = () => {
@@ -23,38 +33,43 @@ function ConferencesApp() {
     );
   };
 
-  const ConferenceDays = () => {
+  const ConferenceDays = ({days}) => {
     return (
       <div>
         <h4>Days:</h4>
         <ListGroup>
-          <ListGroupItem>Working with Legacy Codebase</ListGroupItem>
-          <ListGroupItem>React.js + Redux Workshops</ListGroupItem>
+          {days.map(function(day) {
+            return <ListGroupItem key={day.id}>{day.name}</ListGroupItem>;
+          })} 
         </ListGroup>
       </div>
     );
   };
 
-  const ConferenceEvents = () => {
+  const ConferenceEvents = ({events}) => {
     return (
       <div>
         <h4>Events:</h4>
         <ListGroup>
-          <ListGroupItem>Day 1</ListGroupItem>
-          <ListGroupItem>Day 2</ListGroupItem>
-          <ListGroupItem>Day 3</ListGroupItem>
+          {/*events.map(({event}) => {
+            return <ListGroupItem key={event}>{event}</ListGroupItem>
+          })*/
+            events.map(function(event) {
+              return <ListGroupItem key={event}>{event}</ListGroupItem>;
+            })
+          }
         </ListGroup>
       </div>
     );
   };
 
-  const ConferenceDetails = () => {
+  const ConferenceDetails = ({title, days, events, active}) => {
     const conferenceHeader = (
       <div>
         <div className="pull-right">
           <Button bsSize="xs" bsStyle="primary">Show</Button>
         </div>
-        Wroc_love.rb 2016
+        {title}
       </div>
     ); 
 
@@ -63,10 +78,10 @@ function ConferencesApp() {
         <Grid>
           <Row>
             <Col md={6}>
-              <ConferenceDays/>
+              <ConferenceDays days={days}/>
             </Col>
             <Col md={6}>
-              <ConferenceEvents/>
+              <ConferenceEvents events={events}/>
             </Col>  
           </Row>
         </Grid>
@@ -74,12 +89,14 @@ function ConferencesApp() {
     );
   };
 
-  const Conferences = () => {
+  const Conferences = ({conferences}) => {
     return (
       <Grid clasName="container">
         <Row className="row">
           <Header/>
-          <ConferenceDetails/>
+          {conferences.map(({title, days, events, active}) => {
+            return <ConferenceDetails key={title} id={title} title={title} days={days} events={events} active={active}/>
+          })}
         </Row>
       </Grid>
     );
@@ -87,7 +104,7 @@ function ConferencesApp() {
 
   return {
     ui() { 
-      return (<Conferences/>);
+      return (<Conferences conferences={conferenceDetailsData}/>);
     }
   };
 };
