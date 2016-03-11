@@ -37,11 +37,19 @@ function ConferencesApp() {
     return (
       <div>
         <h4>Days:</h4>
-        <ListGroup>
-          {days.map(function(day) {
-            return <ListGroupItem key={day.id}>{day.name}</ListGroupItem>;
-          })} 
-        </ListGroup>
+        {(() => {
+          if (days.length > 0) {
+            return ( 
+              <ListGroup>
+                {days.map(function(day) {
+                  return <ListGroupItem key={day.id}>{day.name}</ListGroupItem>;
+                })} 
+              </ListGroup>
+              );
+          } else {
+            return <p><i>No days defined.</i></p>;
+          }
+        })()}
       </div>
     );
   };
@@ -50,15 +58,23 @@ function ConferencesApp() {
     return (
       <div>
         <h4>Events:</h4>
-        <ListGroup>
-          {/*events.map(({event}) => {
-            return <ListGroupItem key={event}>{event}</ListGroupItem>
-          })*/
-            events.map(function(event) {
-              return <ListGroupItem key={event}>{event}</ListGroupItem>;
-            })
+        {(() => {
+          if (events.length > 0) {
+            return (
+             <ListGroup>
+              {/*events.map(({event}) => {
+                return <ListGroupItem key={event}>{event}</ListGroupItem>
+              })*/
+                events.map(function(event) {
+                  return <ListGroupItem key={event}>{event}</ListGroupItem>;
+                })
+              }
+            </ListGroup>
+            );
+          } else {
+            return <p><i>No events defined.</i></p>;
           }
-        </ListGroup>
+        })()}
       </div>
     );
   };
