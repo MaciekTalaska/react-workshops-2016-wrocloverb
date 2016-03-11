@@ -1,5 +1,5 @@
 const { $, React, ReactDOM,
-        ReactBootstrap: {Row, Grid, Button, ButtonGroup}} = window;
+        ReactBootstrap: {Row, Grid, Button, ButtonGroup, Panel }} = window;
 
 function ConferencesApp() {
   const Header = () => {
@@ -17,10 +17,30 @@ function ConferencesApp() {
             );
   };
 
+  const ConferenceDetails = () => {
+    const conferenceHeader = (
+      <div>
+        <div className="pull-right">
+          <Button bsSize="xs" bsStyle="primary">Show</Button>
+        </div>
+        Wroc_love.rb 2016
+      </div>
+    ); 
+
+    return (<Panel header={conferenceHeader}>
+              Just a placeholder...
+              <div class="pull-right">
+                <Button bsSize="xs" bsStyle="primary">Show</Button>
+              </div>
+            </Panel>
+    );
+  };
+
   const Conferences = () => {
     return (<Grid clasName="container">
               <Row className="row">
                 <Header/>
+                <ConferenceDetails/>
               </Row>
             </Grid>
             
