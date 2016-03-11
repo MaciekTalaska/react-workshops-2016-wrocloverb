@@ -10,14 +10,14 @@ function OverviewApp() {
            </h1> );
   };
 
-  const ConferenceRow = () => {
+  const ConferenceRow = ({id, name}) => {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
           <div className="pull-right">
-            <a href="/conferences/active-conference" className="btn btn-primary btn-xs">Show</a>
+            <a href="/conferences/${id}" className="btn btn-primary btn-xs">Show</a>
           </div>
-          <h3 className="panel-title">wroc_love.rb 2016</h3>
+          <h3 className="panel-title">{name}</h3>
         </div>
       </div>
     );
@@ -27,7 +27,8 @@ function OverviewApp() {
     return (<div className="container">
               <div className="row">
                 <Header/>
-                <ConferenceRow />
+                <ConferenceRow id="active=conference" name="wroc_love.rb 2016"/>
+                <ConferenceRow id="past-conference" name="wroc_love.rb 2015" />
               </div>
             </div>)
   };
