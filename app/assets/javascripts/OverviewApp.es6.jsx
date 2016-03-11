@@ -1,36 +1,41 @@
-const { $, React, ReactDOM } = window;
+const { $, React, ReactDOM, 
+        ReactBootstrap: {Row, Grid, Panel, Button}} = window;
 
 function OverviewApp() {
   const Header = () => {
     return (<h1>
               <div className="pull-right">
-                <p><a href="/conferences" className="btn btn-primary">Detailed view</a></p>
+                <p><Button href="/conferences" bsStyle="primary">Detailed view</Button></p>
               </div>
               Conferences
            </h1> );
   };
 
   const ConferenceRow = ({id, name}) => {
-    return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <div className="pull-right">
-            <a href="/conferences/${id}" className="btn btn-primary btn-xs">Show</a>
-          </div>
-          <h3 className="panel-title">{name}</h3>
+    const contents = 
+      <h3>
+        <div className="pull-right">
+          <Button href="/conferences/${id}" 
+                  bsStyle="primary"
+                  bsSize="xs">Show</Button>
+          
         </div>
-      </div>
+        {name}
+      </h3>;
+
+    return (
+      <Panel expanded={false} collapsible header={contents} />
     );
   };
 
   const Overview = () => {
-    return (<div className="container">
-              <div className="row">
+    return (<Grid className="container">
+              <Row className="row">
                 <Header/>
                 <ConferenceRow id="active=conference" name="wroc_love.rb 2016"/>
                 <ConferenceRow id="past-conference" name="wroc_love.rb 2015" />
-              </div>
-            </div>)
+              </Row>
+            </Grid>)
   };
 
   return {
