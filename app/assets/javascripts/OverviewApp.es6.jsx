@@ -1,5 +1,5 @@
 const { $, React, ReactDOM, 
-        ReactBootstrap: {Row, Grid, Panel, Button}} = window;
+        ReactBootstrap: {Row, Grid, Button}} = window;
 
 function OverviewApp() {
   const Header = () => {
@@ -12,19 +12,17 @@ function OverviewApp() {
   };
 
   const ConferenceRow = ({id, name}) => {
-    const contents = 
-      <h3>
-        <div className="pull-right">
-          <Button href="/conferences/${id}" 
-                  bsStyle="primary"
-                  bsSize="xs">Show</Button>
-          
-        </div>
-        {name}
-      </h3>;
-
     return (
-      <Panel expanded={false} collapsible header={contents} />
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <div className="pull-right">
+            <Button bsStyle="primary"
+                    bsSize="xs"
+                    href={`/conferences/${id}`}>Show</Button>
+          </div> 
+          <h3 className="panel-title">{name}</h3>
+        </div>
+      </div>
     );
   };
 
