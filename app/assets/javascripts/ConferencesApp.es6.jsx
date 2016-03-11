@@ -29,9 +29,6 @@ function ConferencesApp() {
 
     return (<Panel header={conferenceHeader}>
               Just a placeholder...
-              <div class="pull-right">
-                <Button bsSize="xs" bsStyle="primary">Show</Button>
-              </div>
             </Panel>
     );
   };
