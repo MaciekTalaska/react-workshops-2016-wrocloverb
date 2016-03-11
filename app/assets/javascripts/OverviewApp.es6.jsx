@@ -59,10 +59,6 @@ function OverviewApp() {
   const connector = ReactRedux.connect(stateMapper, dispatchMapper);  
   const ConnectedOverview = connector(Overview);
 
-
-
-
-
   return {
     ui() { 
       return (<ReactRedux.Provider store={store}>
