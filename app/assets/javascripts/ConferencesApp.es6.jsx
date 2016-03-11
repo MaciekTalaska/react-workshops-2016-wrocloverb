@@ -64,10 +64,12 @@ function ConferencesApp() {
   };
 
   const ConferenceDetails = ({title, days, events, active}) => {
-    const conferenceHeader = (
+   const btnClass = active ? 'primary' : 'default';
+
+   const conferenceHeader = (
       <div>
         <div className="pull-right">
-          <Button bsSize="xs" bsStyle="primary">Show</Button>
+          <Button bsSize="xs" bsStyle={btnClass}>Show</Button>
         </div>
         {title}
       </div>
