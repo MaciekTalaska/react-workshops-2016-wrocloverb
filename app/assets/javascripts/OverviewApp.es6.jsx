@@ -2,6 +2,13 @@ const { $, React, ReactDOM,
         ReactBootstrap: {Row, Grid, Button}} = window;
 
 function OverviewApp() {
+  const initialState = () => {
+    return [
+      {id: "active-conference", name: "wroc_love.rb 2016" },
+      {id: "past-conference"  , name: "wroc_love.rb 2015" }
+    ];
+  };
+
   const Header = () => {
     return (<h1>
               <div className="pull-right">
