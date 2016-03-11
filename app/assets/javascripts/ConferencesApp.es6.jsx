@@ -103,6 +103,14 @@ function ConferencesApp() {
             </Col>  
           </Row>
         </Grid>
+        {(() => {
+          if (active === false) {
+            return ( 
+              <div className="alert alert-warning">
+                <p>This is a past conference. Data available here is read-only!</p>
+              </div>);
+          }
+        })()}
       </Panel>
     );
   };
