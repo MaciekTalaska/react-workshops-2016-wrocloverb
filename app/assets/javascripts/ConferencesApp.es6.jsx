@@ -41,9 +41,11 @@ function ConferencesApp() {
           if (days.length > 0) {
             return ( 
               <ListGroup>
-                {days.map(function(day) {
-                  return <ListGroupItem key={day.id}>{day.name}</ListGroupItem>;
-                })} 
+                {
+                  days.map((d) => {
+                    return <ListGroupItem key={d.id}>{d.name}</ListGroupItem>;
+                   })
+                } 
               </ListGroup>
               );
           } else {
@@ -62,12 +64,10 @@ function ConferencesApp() {
           if (events.length > 0) {
             return (
              <ListGroup>
-              {/*events.map(({event}) => {
-                return <ListGroupItem key={event}>{event}</ListGroupItem>
-              })*/
-                events.map(function(event) {
-                  return <ListGroupItem key={event}>{event}</ListGroupItem>;
-                })
+              {
+                events.map((e) => {
+                  return <ListGroupItem key={e}>{e}</ListGroupItem>
+                 })
               }
             </ListGroup>
             );
